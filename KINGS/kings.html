@@ -6,84 +6,137 @@
 <title>KINGS PAYROLL PRO</title>
 
 <style>
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #ADD8E6;
+ body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    text-align: left; 
     padding: 20px;
+    background-image: url('../bg.jpg'); /* Ensure this path is correct on GitHub */
+    background-size: cover;        
+    background-position: center;   
+    background-attachment: fixed;  
+    background-repeat: no-repeat;
+    color: #333;
 }
+
+/* Glassmorphism Effect for the main container */
 .container {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-    max-width: 1500px;
+    background: rgba(255, 255, 255, 0.25); /* Semi-transparent white */
+    backdrop-filter: blur(12px);           /* Frosted glass blur */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 1450px;
     margin: auto;
 }
+
+h2 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-top: 0;
+}
+
 .rates {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.rate-box {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 5px 12px;
+    border-radius: 5px;
     font-size: 13px;
     font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.rate-box {
-    background: #eee;
-    padding: 2px 10px;
-    border-radius: 2px;
-}
+
 .config-area {
-    background: #f9f9f9;
+    background: rgba(255, 255, 255, 0.2);
     padding: 15px;
-    border: 1px dashed #bbb;
+    border: 1px dashed rgba(255, 255, 255, 0.5);
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
+
 .input-area {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
+
 input {
-    padding: 6px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.6); /* Transparent inputs */
     width: 100%;
     box-sizing: border-box;
+    font-weight: bold;
 }
+
+input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #007bff;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #ccc;
-    margin-top: 10px;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent table body */
 }
+
 th, td {
-    padding: 8px;
-    border: 1px solid #ccc;
+    padding: 12px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
 }
+
 th {
-    background: #f0f0f0;
+    background: rgba(255, 255, 255, 0.3); /* Transparent headers */
     font-weight: bold;
     font-size: 11px;
+    text-transform: uppercase;
 }
+
 .total-row {
     font-weight: bold;
-    background: #f2f2f2;
+    background: rgba(255, 255, 255, 0.4); /* Transparent footer */
 }
-.penalty { color: red; }
-.buttons { margin-top: 15px; }
+
+.penalty { color: #d93025; font-weight: bold; }
+
+.buttons { margin-top: 20px; }
+
 button {
-    padding: 8px 15px;
+    padding: 10px 20px;
     margin-right: 10px;
     cursor: pointer;
-    border: 1px solid #999;
-    background: #fff;
-    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
 }
-button:hover { background: #f0f0f0; }
-.btn-delete { color: red; border: none; background: none; cursor: pointer; font-weight: bold; }
+
+button:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-delete { color: #d93025; border: none; background: none; font-size: 18px; }
+
+/* Print adjustments */
+@media print {
+    body { background: none; padding: 0; }
+    .container { box-shadow: none; border: none; background: white; }
+    .config-area, .buttons, .btn-delete { display: none; }
+}
 </style>
 </head>
 
@@ -93,10 +146,10 @@ button:hover { background: #f0f0f0; }
     <h2>KINGS PAYROLL</h2>
 
     <div class="config-area">
-        <strong>+ Add Custom Rate</strong>
+        <strong> Add Custom Rate</strong>
         <div style="display: flex; gap: 10px; margin-top: 5px;">
             <input type="text" id="newRateName" placeholder="Rate Name (e.g. Bonus)" style="width: 200px;">
-            <input type="number" id="newRateValue" placeholder="Rate/hr" style="width: 100px;">
+            <input type="number" id="newRateValue" placeholder="Rate/hr" style="width: 200px;">
             <button onclick="addNewRateColumn()">Add Column</button>
         </div>
     </div>
@@ -148,18 +201,18 @@ button:hover { background: #f0f0f0; }
     </table>
 
     <div class="buttons">
-        <button onclick="window.print()">Print</button>
-        <button onclick="exportToCSV()" style="background: #e1f5fe;">Export to CSV (Excel)</button>
-        <button onclick="clearAll()" style="color:red; border-color: red;">Clear All</button>
+        <button onclick="window.print()">Print Report</button>
+        <button onclick="exportToCSV()" style="background: rgba(0, 123, 255, 0.2);">Export to CSV</button>
+        <button onclick="clearAll()" style="color:#d93025; border-color: rgba(217, 48, 37, 0.4);">Clear All</button>
     </div>
 
-    <div style="margin-top:10px; text-align:right; color:red;">
+    <div style="margin-top:20px; text-align:right; color:#d93025; font-weight: bold;">
         REG DAYS + OT DAYS / REG DAYS = <span id="effValue">0</span>
     </div>
 </div>
 
 <script>
-// Configuration & Constants
+// Logic remains exactly as your provided code to ensure separate data storage works
 const RATE_DAILY = 916.24;
 const RATE_REG_OT = 117.28125;
 const RATE_RD_OT = 121.9725;
@@ -167,13 +220,11 @@ const RATE_RD_EX = 158.56425;
 const RATE_NIGHT = 9.3825;
 const RATE_LATE = 1.44792;
 
-// State Variables
-let extraRatesList_v2 = JSON.parse(localStorage.getItem('extraRatesList_v2')) || [];
-let payrollData_v2 = JSON.parse(localStorage.getItem('payrollData_v2')) || [];
+let extraRatesList_v1 = JSON.parse(localStorage.getItem('extraRatesList_v1')) || [];
+let payrollData_v1 = JSON.parse(localStorage.getItem('payrollData_v1')) || [];
 
-// Initialization
 window.onload = () => {
-    extraRatesList_v2.forEach(item => renderNewColumnElements(item));
+    extraRatesList_v1.forEach(item => renderNewColumnElements(item));
     renderTable();
 };
 
@@ -181,14 +232,11 @@ function addNewRateColumn() {
     const name = document.getElementById('newRateName').value.toUpperCase();
     const rate = parseFloat(document.getElementById('newRateValue').value);
     if(!name || isNaN(rate)) return;
-
     const id = "extra_" + name.replace(/\s+/g, '_');
     const newItem = { id, name, rate };
-    
-    extraRatesList_v2.push(newItem);
+    extraRatesList_v1.push(newItem);
     renderNewColumnElements(newItem);
     saveData();
-    
     document.getElementById('newRateName').value = "";
     document.getElementById('newRateValue').value = "";
 }
@@ -231,13 +279,11 @@ function addRow() {
         late: +lateMin.value || 0,
         extras: {}
     };
-
-    extraRatesList_v2.forEach(r => {
+    extraRatesList_v1.forEach(r => {
         entry.extras[r.id] = +document.getElementById(r.id).value || 0;
     });
-
     if (Object.values(entry).some(v => v > 0) || Object.values(entry.extras).some(v => v > 0)) {
-        payrollData_v2.push(entry);
+        payrollData_v1.push(entry);
         saveData();
         renderTable();
         document.querySelectorAll("#dynamicInputs input").forEach(i => i.value = "");
@@ -248,11 +294,10 @@ function addRow() {
 function renderTable() {
     const tbody = document.querySelector("#payrollTable tbody");
     tbody.innerHTML = "";
-    
     let t = { reg:0, regP:0, rot:0, rotP:0, rd:0, rdP:0, rdx:0, rdxP:0, ni:0, niP:0, la:0, pen:0, grand:0, extraTotals:{} };
-    extraRatesList_v2.forEach(r => t.extraTotals[r.id] = { hrs:0, pay:0 });
+    extraRatesList_v1.forEach(r => t.extraTotals[r.id] = { hrs:0, pay:0 });
 
-    payrollData_v2.forEach((row, index) => {
+    payrollData_v1.forEach((row, index) => {
         let rp = row.reg * RATE_DAILY;
         let rotp = row.regOT * RATE_REG_OT;
         let rdp = row.rd * RATE_RD_OT;
@@ -262,7 +307,7 @@ function renderTable() {
         let rowTotal = rp + rotp + rdp + rdxp + nip - pen;
 
         let extraCells = "";
-        extraRatesList_v2.forEach(r => {
+        extraRatesList_v1.forEach(r => {
             let hrs = row.extras[r.id] || 0;
             let pay = hrs * r.rate;
             rowTotal += pay;
@@ -283,13 +328,11 @@ function renderTable() {
             ${extraCells}
             <td>${rowTotal.toFixed(2)}</td>
         `;
-
         t.reg += row.reg; t.regP += rp; t.rot += row.regOT; t.rotP += rotp;
         t.rd += row.rd; t.rdP += rdp; t.rdx += row.rdEx; t.rdxP += rdxp;
         t.ni += row.night; t.niP += nip; t.la += row.late; t.pen += pen; t.grand += rowTotal;
     });
 
-    // Update Totals UI
     sumReg.innerText = t.reg.toFixed(2); sumRegPay.innerText = t.regP.toFixed(2);
     sumRegOT.innerText = t.rot.toFixed(2); sumRegOTPay.innerText = t.rotP.toFixed(2);
     sumRDOT.innerText = t.rd.toFixed(2); sumRDOTPay.innerText = t.rdP.toFixed(2);
@@ -298,7 +341,7 @@ function renderTable() {
     sumLate.innerText = t.la.toFixed(2); sumPenalty.innerText = t.pen.toFixed(2);
     grandTotal.innerText = t.grand.toFixed(2);
 
-    extraRatesList_v2.forEach(r => {
+    extraRatesList_v1.forEach(r => {
         document.getElementById("sumHrs_" + r.id).innerText = t.extraTotals[r.id].hrs.toFixed(2);
         document.getElementById("sumPay_" + r.id).innerText = t.extraTotals[r.id].pay.toFixed(2);
     });
@@ -309,21 +352,23 @@ function renderTable() {
 }
 
 function deleteRow(index) {
-    payrollData_v2.splice(index, 1);
-    saveData();
-    renderTable();
+    if(confirm("Remove this entry?")) {
+        payrollData_v1.splice(index, 1);
+        saveData();
+        renderTable();
+    }
 }
 
 function saveData() {
-    localStorage.setItem('payrollData_v2_v2', JSON.stringify(payrollData_v2));
-    localStorage.setItem('extraRatesList_v2', JSON.stringify(extraRatesList_v2));
+    localStorage.setItem('payrollData_v1', JSON.stringify(payrollData_v1));
+    localStorage.setItem('extraRatesList_v1', JSON.stringify(extraRatesList_v1));
 }
 
 function clearAll() {
-    if(confirm("Delete all data for Kings Payroll?")) {
-        payrollData_v2 = [];
-        extraRatesList_v2 = [];
-        localStorage.clear();
+    if(confirm("Are you sure you want to delete EVERYTHING?")) {
+        payrollData_v1 = [];
+        extraRatesList_v1 = [];
+        saveData();
         location.reload();
     }
 }
@@ -338,7 +383,7 @@ function exportToCSV() {
     const csvContent = "data:text/csv;charset=utf-8," + rows.join("\n");
     const link = document.createElement("a");
     link.setAttribute("href", encodeURI(csvContent));
-    link.setAttribute("download", "payroll_export.csv");
+    link.setAttribute("download", "payroll_report.csv");
     document.body.appendChild(link);
     link.click();
 }
