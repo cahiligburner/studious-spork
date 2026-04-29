@@ -4,14 +4,51 @@
     <meta charset="UTF-8">
     <title>PAYROLL</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px;background-image: url('bg.jpg');
-    background-size: cover;        /* Makes image fill the screen */
-    background-position: center;   /* Keeps it centered */
-    background-attachment: fixed;  /* Content scrolls, background stays still */
-    background-repeat: no-repeat;
-        .card { background: white; padding: 20px; margin: 10px; border-radius: 8px; display: inline-block; width: 250px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        a { text-decoration: none; color: #007bff; font-weight: bold; font-size: 1.2rem; }
-        a:hover { color: #0056b3; }
+        body { 
+            font-family: sans-serif; 
+            text-align: center; 
+            padding: 50px;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        h1 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+        .card { 
+            /* Glassmorphism Effect */
+            background: rgba(255, 255, 255, 0.3); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            
+            padding: 40px; 
+            margin: 15px; 
+            border-radius: 12px; 
+            display: inline-block; 
+            width: 250px; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2); 
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+
+        a { 
+            text-decoration: none; 
+            
+            /* CHANGE THIS TO #000000 FOR BLACK OR #333333 FOR DARK GRAY */
+            color: #000000; 
+            
+            font-weight: bold; 
+            font-size: 1.2rem; 
+            
+            /* This adds a subtle glow behind the text so it's readable on ANY background */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); 
+        }
     </style>
 </head>
 <body>
