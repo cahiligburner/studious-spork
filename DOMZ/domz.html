@@ -252,7 +252,7 @@ function addNewRateColumn() {
 function renderNewColumnElements(item) {
     const box = document.createElement('div');
     box.className = 'rate-box';
-    box.innerText = `${item.name}: ₱${item.rate}/hr`;
+    box.innerText = `${item.name}: ₱${item.rate}`;
     document.getElementById('ratesContainer').appendChild(box);
 
     const input = document.createElement('input');
