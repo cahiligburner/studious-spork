@@ -356,7 +356,7 @@ function renderTable() {
 
     let extraHrs = Object.values(t.extraTotals).reduce((a, b) => a + b.hrs, 0);
     let effNum = t.reg + ((t.rot + t.rd + t.rdx + extraHrs) / 8);
-    effValue.innerText = `${effNum.toFixed(2)} / ${t.reg || 0}`;
+    effValue.innerText = `${effNum.toFixed(4)} / ${t.reg || 0}`;
 }
 
 function deleteRow(index) {
